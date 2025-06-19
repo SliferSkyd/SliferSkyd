@@ -1,12 +1,15 @@
 name: Proselint
 
 on:
+  push:
+    paths:
+      - '**/*.md'
   pull_request:
     paths:
       - '**/*.md'
 
 jobs:
-  lint:
+  proselint:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,10 +21,9 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install proselint
+      - name: Install Proselint
         run: pip install proselint
 
-      - name: Run proselint on Markdown files
+      - name: Run Proselint on all .md files
         run: |
-          echo "Checking .md files with proselint:"
-          find . -type f -name "*.md" | xargs -r proselint
+          find . -name "*.md" -print0 | xargs -0 proselint
