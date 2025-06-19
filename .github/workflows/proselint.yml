@@ -1,0 +1,27 @@
+name: Proselint
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install proselint
+        run: pip install proselint
+
+      - name: Run proselint on Markdown files
+        run: |
+          echo "Checking .md files with proselint:"
+          find . -type f -name "*.md" | xargs -r proselint
