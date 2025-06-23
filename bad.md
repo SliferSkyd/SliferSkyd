@@ -1,1 +1,1 @@
-Hoang is very unique. AAAA
+Hoang is very uniques. He are intelligent.
