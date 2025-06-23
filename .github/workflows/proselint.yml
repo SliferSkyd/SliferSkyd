@@ -1,9 +1,6 @@
 name: Proselint
 
 on:
-  push:
-    paths:
-      - '**/*.md'
   pull_request:
     paths:
       - '**/*.md'
